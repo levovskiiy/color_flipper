@@ -12,22 +12,21 @@
       <header class="header page__header">
         <nav class="header__navigation">
           <h2 class="header__title">Color Flipper</h2>
-          <ul class="header__list">
-            <li class="header__list-item">
-              <button type="button" class="header__button button">Simple</button>
-            </li>
-            <li class="header__list-item">
-              <button type="button" class="header__button button">Hex</button>
-            </li>
-          </ul>
-        </nav>
       </header>
       <main class="content page__content">
+        <div class="content__tooltip-copied">Color copied</div>
         <div class="content__container">
-          <h1 class="content__color">Background-color: <span class="content__color-value">#F1F2D3F</span></h1>
-          <button class="content__button button">Flip color</button>
+          <h1 class="content__color">background-color: <span class="content__color-value">#F1F2D3F</span></h1>
+          <div class="content__button-container">
+            <button class="content__button button">to hex</button>
+            <button class="content__button button">to rgb</button>
+            <button class="content__button button">flip color</button>
+            <button class="content__button button">copy</button>
+          </div>
         </div>
       </main>
     </div>
+
+    <script src="scripts/flip.js"></script>
   </body>
 </html>

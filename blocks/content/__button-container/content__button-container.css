@@ -1,0 +1,6 @@
+.content__button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 45px;
+  gap: 45px;
+}

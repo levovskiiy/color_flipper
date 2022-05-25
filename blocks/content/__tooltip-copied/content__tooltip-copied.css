@@ -1,0 +1,9 @@
+.content__tooltip-copied {
+  position: absolute;
+  top: 50px;
+  font-size: 35px;
+  visibility: hidden;
+  opacity: 0;
+  color: #fff;
+  transition: visibility 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
