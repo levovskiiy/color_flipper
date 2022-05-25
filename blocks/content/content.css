@@ -1,0 +1,9 @@
+.content {
+  max-width: 960px;
+  max-height: calc(100vh - 63px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
