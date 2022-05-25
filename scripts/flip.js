@@ -44,7 +44,7 @@ const generateRandomHex = () => {
     result += randomDecimal.toString(16)
   }
 
-  return result
+  return result.toUpperCase()
 }
 
 flipBgColor()
@@ -54,5 +54,5 @@ toHexButton.addEventListener('click', () => toHex(getColor()))
 copyButton.addEventListener('click', evt => {
   navigator.clipboard.writeText(getColor())
   tooltip.classList.add('content__tooltip-copied_visible')
-  setInterval(() => tooltip.classList.remove('content__tooltip-copied_visible'), 1000)
+  setTimeout(() => tooltip.classList.remove('content__tooltip-copied_visible'), 1000)
 })
