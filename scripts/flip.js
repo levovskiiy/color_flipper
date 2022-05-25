@@ -50,13 +50,17 @@ const generateRandomHex = () => {
 flipButton.addEventListener('click', flipBgColor)
 
 toRgbButton.addEventListener('click', () => {
-  const rgb = toRgb(getColor())
-  insertColor(rgb)
+  const color = getColor()
+  if (!color.startsWith('rgb')) {
+    insertColor(toRgb(color))
+  }
 })
 
 toHexButton.addEventListener('click', () => {
-  const hex = toHex(getColor())
-  insertColor(hex)
+  const color = getColor()
+  if (!color.startsWith('#')) {
+    insertColor(toHex(color))
+  }
 })
 
 copyButton.addEventListener('click', evt => {
