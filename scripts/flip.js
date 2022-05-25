@@ -14,27 +14,27 @@ const flipBgColor = () => {
   insertColor(hex)
 }
 
+/**
+ * Функция сонвертирует из шестнадцетеричного представления цвета в rgb.
+ * @param {String} color
+ * @returns {String}
+ */
 const toRgb = color => {
-  if (color.startsWith('rgb')) {
-    return
-  }
+  const numbers = color
+    .match(/\d{2}|\w{2}/g)
+    .map(n => parseInt(n, 16))
+    .join(', ')
 
-  color = color.slice(1)
-
-  let rgbColor = []
-  for (let i = 0; i < color.length; i += 2) {
-    rgbColor.push(parseInt(color.slice(i, i + 2), 16))
-  }
-
-  insertColor(`rgb(${rgbColor.join(', ')})`)
+  return `rgb(${numbers})`
 }
 
+/**
+ * Функция преобразовывает из представления цвета rgb в шестнадцетеричное представление.
+ * @param {String} color - строка чисел для каждого цвета rgb
+ * @returns {String}
+ */
 const toHex = color => {
-  if (color.startsWith('#')) {
-    return
-  }
-  console.log(1)
-  insertColor(color.match(/\d+/g).reduce((acc, curr) => acc + parseInt(curr, 10).toString(16), '#'))
+  return color.match(/\d+/g).reduce((acc, num) => acc + parseInt(num).toString(16), '#')
 }
 
 const generateRandomHex = () => {
@@ -47,10 +47,18 @@ const generateRandomHex = () => {
   return result.toUpperCase()
 }
 
-flipBgColor()
 flipButton.addEventListener('click', flipBgColor)
-toRgbButton.addEventListener('click', () => toRgb(getColor()))
-toHexButton.addEventListener('click', () => toHex(getColor()))
+
+toRgbButton.addEventListener('click', () => {
+  const rgb = toRgb(getColor())
+  insertColor(rgb)
+})
+
+toHexButton.addEventListener('click', () => {
+  const hex = toHex(getColor())
+  insertColor(hex)
+})
+
 copyButton.addEventListener('click', evt => {
   navigator.clipboard.writeText(getColor())
   tooltip.classList.add('content__tooltip-copied_visible')
