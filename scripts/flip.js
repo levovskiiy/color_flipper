@@ -34,17 +34,14 @@ const toRgb = color => {
  * @returns {String}
  */
 const toHex = color => {
-  return color.match(/\d+/g).reduce((acc, num) => acc + parseInt(num).toString(16), '#')
+  const [r, g, b] = color.match(/\d+/g)
+
+  return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
 }
 
 const generateRandomHex = () => {
-  let result = '#'
-  for (let i = 0; i < 6; i++) {
-    const randomDecimal = Math.floor(Math.random() * 16)
-    result += randomDecimal.toString(16)
-  }
-
-  return result.toUpperCase()
+  const randomHex = Math.floor(Math.random() * 0xffffff).toString(16)
+  return `${randomHex.padEnd(6, '0')}`
 }
 
 flipButton.addEventListener('click', flipBgColor)
