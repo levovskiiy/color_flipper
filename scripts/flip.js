@@ -10,7 +10,8 @@ const insertColor = insertedColor => (color.textContent = insertedColor)
 
 const flipBgColor = () => {
   const hex = generateRandomHex()
-  bg.style.backgroundColor = hex
+  console.log(hex)
+  bg.style.backgroundColor = `#${hex}`
   insertColor(hex)
 }
 
@@ -34,8 +35,7 @@ const toRgb = color => {
  * @returns {String}
  */
 const toHex = color => {
-  const [r, g, b] = color.match(/\d+/g)
-
+  const [r, g, b] = color.match(/\d+/g).map(v => Number(v))
   return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
 }
 
